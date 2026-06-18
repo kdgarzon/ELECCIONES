@@ -2,10 +2,10 @@
   "name": "electoral-backend",
   "version": "1.0.0",
   "description": "Sistema de Gestión Electoral - Backend API REST",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "lint": "eslint src/**/*.js",
     "lint:fix": "eslint src/**/*.js --fix",
     "format": "prettier --write src/**/*.js"
