@@ -1,18 +1,49 @@
 
-# 1. CONFIGURACIÓN PARA EL BACKEND
+# CONFIGURACIÓN PARA EL BACKEND
 
 backend/node_modules/
 backend/.env
 backend/npm-debug.log*
 
-# 2. CONFIGURACIÓN PARA EL FRONTEND
-
-frontend/node_modules/
-frontend/dist/
-frontend/build/
-
-# 3. ARCHIVOS GENERALES DEL SISTEMA
+# ARCHIVOS GENERALES DEL SISTEMA
 
 .DS_Store
 .vscode/
 Thumbs.db
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Environment
+.env
+/frontend/.env
+.env.local
+.env.*.local
+
+# Build outputs
+dist/
+build/
+.next/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+
+# IDE
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Docker volumes (local)
+postgres_data/
+
+# Coverage
+coverage/
+.nyc_output/
