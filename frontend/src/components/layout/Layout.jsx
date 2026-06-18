@@ -25,7 +25,7 @@ const Layout = () => (
             </Typography>
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <Typography variant="body2" color="text.secondary">OATI - UD</Typography>
+            <Typography variant="body2" color="text.secondary">PRUEBA TÉCNICA</Typography>
             <Avatar sx={{ width: 32, height: 32, bgcolor: '#38BDF8', color: '#0F172A', fontSize: 14, fontWeight: 700 }}>
               UD
             </Avatar>

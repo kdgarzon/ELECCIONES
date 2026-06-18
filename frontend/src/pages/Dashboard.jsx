@@ -94,8 +94,7 @@ const Dashboard = () => {
                 <Typography variant="h6" fontWeight={600}>Acerca del Sistema</Typography>
               </Box>
               <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.8 }}>
-                El <strong>Sistema de Gestión Electoral</strong> de la OATI - Universidad Distrital
-                permite administrar de manera integral el proceso electoral: registro de partidos
+                El <strong>Sistema de Gestión Electoral</strong> permite administrar de manera integral el proceso electoral: registro de partidos
                 políticos, gestión de candidatos y emisión de votos de forma segura y transparente.
               </Typography>
               <Box sx={{ mt: 2, display: 'flex', gap: 1, flexWrap: 'wrap' }}>

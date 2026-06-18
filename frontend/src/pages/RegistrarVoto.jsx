@@ -55,9 +55,10 @@ const RegistrarVoto = () => {
     if (!validate()) return;
     setLoading(true);
     try {
+      // Solo se envía id_candidato: el backend deriva el partido
+      // desde la relación candidatos → partidos, sin redundancia en votos.
       const res = await votoService.create({
         id_candidato: Number(form.id_candidato),
-        id_partido: Number(form.id_partido),
       });
       setVotoRegistrado(res.data.data);
       setForm({ id_partido: '', id_candidato: '' });

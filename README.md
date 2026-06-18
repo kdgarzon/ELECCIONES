@@ -1,10 +1,10 @@
-# 🗳️ Sistema de Gestión Electoral — OATI Universidad Distrital
+# Sistema de Gestión Electoral — Prueba técnica
 
 Sistema web full stack para la administración del proceso electoral universitario: partidos, candidatos y votos.
 
 ---
 
-## 🧱 Stack Tecnológico
+## Stack Tecnológico
 
 | Capa       | Tecnología                                    |
 |------------|-----------------------------------------------|
@@ -18,7 +18,7 @@ Sistema web full stack para la administración del proceso electoral universitar
 
 ---
 
-## 🏗️ Arquitectura
+## Arquitectura
 
 El proyecto implementa **arquitectura en capas** con el **Repository Pattern**:
 
@@ -128,27 +128,33 @@ electoral/
 ---
 
 ## Modelo de Datos
-
+ 
 ```
 ┌─────────────────┐       ┌──────────────────────┐       ┌─────────────────┐
 │    partidos     │       │      candidatos       │       │     votos       │
 ├─────────────────┤       ├──────────────────────┤       ├─────────────────┤
-│ id (PK)         │◄──┐   │ id (PK)              │◄──┐   │ id (PK)         │
-│ nombre (UNIQUE) │   └───│ id_partido (FK)       │   └───│ id_candidato(FK)│
-│ sigla (UNIQUE)  │       │ nombre               │       │ id_partido (FK) │
-│ descripcion     │       │ apellido             │       │ fecha_voto      │
-│ created_at      │       │ documento (UNIQUE)   │       └─────────────────┘
+│ id (PK)         │◄──┐   │ id (PK)              │◄──────│ id (PK)         │
+│ nombre (UNIQUE) │   └───│ id_partido (FK)       │       │ id_candidato(FK)│
+│ sigla (UNIQUE)  │       │ nombre               │       │ fecha_voto      │
+│ descripcion     │       │ apellido             │       └─────────────────┘
+│ created_at      │       │ documento (UNIQUE)   │
 │ updated_at      │       │ correo (UNIQUE)      │
 └─────────────────┘       │ created_at           │
                           │ updated_at           │
                           └──────────────────────┘
 ```
-
+ 
 **Relaciones:**
 - Un `Partido` → muchos `Candidatos`
 - Un `Candidato` → un solo `Partido`
 - Un `Candidato` → muchos `Votos`
-- Un `Voto` almacena `id_candidato`, `id_partido` y `fecha_voto`
+- Un `Voto` almacena solo `id_candidato` y `fecha_voto`
+- El partido de un voto se obtiene siempre mediante `votos → candidatos → partidos`
+> **Decisión de diseño:** `votos` no almacena `id_partido` directamente.
+> Hacerlo sería redundante (ya existe en `candidatos`) y peligroso:
+> un error de código o una petición manipulada podría registrar un voto
+> con `id_candidato = X` (Partido A) pero `id_partido = B`, rompiendo
+> la integridad referencial sin que ninguna FK lo detecte.
 
 ---
 
@@ -221,16 +227,16 @@ cp backend/.env.example backend/.env
 
 ```bash
 # 1. Clonar el repositorio
-git clone <repo-url>
-cd electoral
+git clone <https://github.com/kdgarzon/ELECCIONES.git>
+cd ELECCIONES
 
 # 2. Levantar todos los servicios
 docker compose up --build
 
 # La aplicación estará disponible en:
-# Frontend:  http://localhost
-# Backend:   http://localhost:3001
-# Swagger:   http://localhost:3001/api/docs
+# Frontend:  http://localhost:3001/
+# Backend:   http://localhost:3000
+# Swagger:   http://localhost:3000/api/docs
 ```
 
 Para detener:
@@ -245,7 +251,7 @@ docker compose down -v
 ## Instalación Local (sin Docker)
 
 ### Pre-requisitos
-- Node.js >= 18
+- Node.js 24
 - PostgreSQL 14+
 
 ### Backend

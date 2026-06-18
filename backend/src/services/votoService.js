@@ -10,18 +10,12 @@ const create = async (data) => {
   const candidato = await candidatoRepository.findById(data.id_candidato);
   if (!candidato) { throw new AppError('El candidato especificado no existe', 404); }
 
-  // Validar que el partido del voto coincida con el partido del candidato
-  if (candidato.id_partido !== data.id_partido) {
-    throw new AppError('El partido del voto no coincide con el partido del candidato', 400);
-  }
-
-  const votoData = {
-    id_candidato: data.id_candidato,
-    id_partido: candidato.id_partido,
+  // El partido se deriva del candidato: no se acepta ni se almacena
+  // id_partido en el body — la fuente de verdad es candidatos.id_partido
+  return votoRepository.create({
+    id_candidato: candidato.id,
     fecha_voto: new Date(),
-  };
-
-  return votoRepository.create(votoData);
+  });
 };
 
 const getEstadisticas = async () => {

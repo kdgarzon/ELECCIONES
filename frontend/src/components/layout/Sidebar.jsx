@@ -50,7 +50,7 @@ const Sidebar = () => {
           </Typography>
         </Box>
         <Typography variant="caption" sx={{ color: '#94A3B8', fontSize: '0.7rem' }}>
-          OATI · Universidad Distrital
+          Karen Daniela Garzon Gordillo
         </Typography>
       </Toolbar>
       <Divider sx={{ borderColor: '#1E293B' }} />

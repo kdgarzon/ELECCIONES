@@ -51,15 +51,12 @@ router.get('/estadisticas', controller.getEstadisticas);
  *         application/json:
  *           schema:
  *             type: object
- *             required: [id_candidato, id_partido]
+ *             required: [id_candidato]
  *             properties:
  *               id_candidato: { type: integer, example: 1 }
- *               id_partido: { type: integer, example: 1 }
  *     responses:
  *       201:
  *         description: Voto registrado exitosamente
- *       400:
- *         description: Candidato no pertenece al partido
  *       404:
  *         description: Candidato no encontrado
  */

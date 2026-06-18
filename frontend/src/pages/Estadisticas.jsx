@@ -52,14 +52,14 @@ const Estadisticas = () => {
 
   const dataCandidatos = (data?.por_candidato ?? []).map((item) => ({
     name: `${item.candidato?.nombre} ${item.candidato?.apellido}`,
-    votos: Number(item.dataValues?.total_votos ?? item.total_votos ?? 0),
+    votos: Number(item.total_votos ?? 0),
     partido: item.candidato?.partido?.sigla,
   }));
 
   const dataPartidos = (data?.por_partido ?? []).map((item) => ({
     name: item.partido?.nombre ?? 'Desconocido',
     sigla: item.partido?.sigla,
-    votos: Number(item.dataValues?.total_votos ?? item.total_votos ?? 0),
+    votos: Number(item.total_votos ?? 0),
   }));
 
   const ganadorCandidato = dataCandidatos[0];

@@ -13,10 +13,6 @@ const Voto = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    id_partido: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
     fecha_voto: {
       type: DataTypes.DATE,
       allowNull: false,
