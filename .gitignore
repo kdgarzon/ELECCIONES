@@ -1,0 +1,18 @@
+
+# 1. CONFIGURACIÓN PARA EL BACKEND
+
+backend/node_modules/
+backend/.env
+backend/npm-debug.log*
+
+# 2. CONFIGURACIÓN PARA EL FRONTEND
+
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# 3. ARCHIVOS GENERALES DEL SISTEMA
+
+.DS_Store
+.vscode/
+Thumbs.db
